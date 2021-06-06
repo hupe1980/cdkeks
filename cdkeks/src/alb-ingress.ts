@@ -1,5 +1,5 @@
 import { ICertificate } from '@aws-cdk/aws-certificatemanager';
-import { IConnectable, Connections, ISecurityGroup, SecurityGroup } from '@aws-cdk/aws-ec2';
+import { IConnectable, Connections, ISecurityGroup, SecurityGroup, Port } from '@aws-cdk/aws-ec2';
 import { IpAddressType, SslPolicy } from '@aws-cdk/aws-elasticloadbalancingv2';
 import { Construct, Lazy, Tags, Names } from '@aws-cdk/core';
 import * as cdk8s from 'cdk8s';
@@ -76,12 +76,16 @@ export class AlbIngress extends Cdk8sConstruct implements IConnectable {
       this.securityGroup = new SecurityGroup(this, 'SecurityGroup', {
         vpc: this.platform.cluster.vpc,
         description: `Automatically created Security Group for ELB ${Names.uniqueId(this)}`,
-        allowAllOutbound: false,
+        allowAllOutbound: true,
       });
     }
 
     this.connections = new Connections({ securityGroups: [this.securityGroup] });
     this.securityGroups.push(this.securityGroup);
+
+    //TODO
+    this.platform.cluster.clusterSecurityGroup.connections.allowFrom(this, Port.tcp(80));
+    this.platform.cluster.clusterSecurityGroup.connections.allowFrom(this, Port.tcp(443));
 
     const securityGroupsToken = Lazy.string({ produce: () => this.securityGroups.map((sg) => sg.securityGroupId).join(',') });
 

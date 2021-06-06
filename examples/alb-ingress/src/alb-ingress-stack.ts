@@ -1,3 +1,4 @@
+import { Port } from '@aws-cdk/aws-ec2';
 import { Cluster, KubernetesVersion } from '@aws-cdk/aws-eks';
 import { Role, AccountRootPrincipal } from '@aws-cdk/aws-iam';
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
@@ -34,17 +35,15 @@ export class AlbIngressStack extends Stack {
       ],
     });
 
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
-      const backend = IngressBackend.fromService(deployment.expose('Service', 80));
+    const backend = IngressBackend.fromService(deployment.expose('Service', 80));
 
-      const ingress = new AlbIngress(this, 'Ingress', {
-        platform,
-        targetType: TargetType.IP,
-        internetFacing: true,
-      });
+    const ingress = new AlbIngress(this, 'Ingress', {
+      platform,
+      targetType: TargetType.IP,
+      internetFacing: true,
+    });
 
-      ingress.addRule('/', backend);
-    }
+    ingress.connections.allowFromAnyIpv4(Port.tcp(80));
+    ingress.addRule('/', backend);
   }
 }

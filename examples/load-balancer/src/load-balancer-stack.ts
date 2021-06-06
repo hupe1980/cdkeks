@@ -1,9 +1,8 @@
 import { Cluster, KubernetesVersion } from '@aws-cdk/aws-eks';
 import { Role, AccountRootPrincipal } from '@aws-cdk/aws-iam';
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import * as kplus from 'cdk8s-plus-17';
 
-import { AwsCalicoAddon, Deployment, Platform } from 'cdkeks';
+import { AwsCalicoAddon, Deployment, Platform, ServiceType } from 'cdkeks';
 
 export class LoadBalancerStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps) {
@@ -36,7 +35,7 @@ export class LoadBalancerStack extends Stack {
     });
 
     deployment.expose('LoadBalancer', 80, {
-      serviceType: kplus.ServiceType.LOAD_BALANCER,
+      serviceType: ServiceType.LOAD_BALANCER,
     });
   }
 }

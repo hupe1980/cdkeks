@@ -23,11 +23,56 @@ pip install cdkeks
 
 ## Howto use
 
-### Addons
+### Install Addons
+```typescript
+const platform = new Platform(this, 'Platform', {
+  cluster,
+  addons: [new AwsCalicoAddon(), new AwsLoadBalancerControllerAddon()/*,...*/],
+});
+```
 
 ### Alb ingress
+```typescript
+const deployment = new Deployment(this, 'Deployment', {
+  platform,
+  containers: [
+    {
+      image: 'nginx',
+    },
+  ],
+});
+
+const backend = IngressBackend.fromService(deployment.expose('Service', 80));
+
+const ingress = new AlbIngress(this, 'Ingress', {
+  platform,
+  targetType: TargetType.IP,
+  internetFacing: true,
+});
+
+ingress.connections.allowFromAnyIpv4(Port.tcp(80));
+ingress.addRule('/', backend);
+```
 
 ### LoadBalancer
+```typescript
+const deployment = new Deployment(this, 'Deployment', {
+  platform,
+  containers: [
+    {
+      image: 'nginx',
+    },
+  ],
+});
+
+deployment.expose('LoadBalancer', 80, {
+  serviceType: ServiceType.LOAD_BALANCER,
+});
+```
+
+## API Reference
+
+See [API.md](https://github.com/hupe1980/cdkeks/tree/master/cdkeks/API.md).
 
 ## Example
 
