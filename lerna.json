@@ -1,7 +1,18 @@
 {
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "packages": [
     "cdkeks",
     "examples/*"
   ],
-  "version": "0.0.0"
+  "version": "0.0.1",
+  "command": {
+    "publish": {
+      "allowBranch": "main"
+    }
+  },
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**"
+  ]
 }
