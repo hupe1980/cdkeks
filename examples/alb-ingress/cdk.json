@@ -1,0 +1,3 @@
+{
+  "app": "cdkdx node src/alb-ingress-app.ts"
+}

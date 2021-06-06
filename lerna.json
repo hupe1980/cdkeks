@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "cdkeks",
+    "examples/*"
+  ],
+  "version": "0.0.0"
+}

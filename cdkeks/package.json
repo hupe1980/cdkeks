@@ -1,0 +1,100 @@
+{
+  "name": "cdkeks",
+  "version": "0.0.2",
+  "description": "Higher-level cdk construct to build a eks kubernetes platform with batteries included",
+  "license": "MIT",
+  "author": {
+    "name": "hupe1980",
+    "url": "https://github.com/hupe1980"
+  },
+  "awscdkio": {
+    "twitter": "hupe1980"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hupe1980/cdkeks.git",
+    "directory": "packages/cdkeks"
+  },
+  "homepage": "https://github.com/hupe1980/cdkeks",
+  "keywords": [
+    "aws",
+    "cdk",
+    "cdk8s",
+    "k8s",
+    "eks",
+    "kubernetes",
+    "aws-calico",
+    "aws-load-balancer-controller"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    ".jsii"
+  ],
+  "scripts": {
+    "build": "cdkdx build",
+    "watch": "cdkdx build -w",
+    "test": "cdkdx test",
+    "lint": "cdkdx lint",
+    "upgrade:cdk": "cdkdx upgrade-cdk",
+    "package": "cdkdx package",
+    "docgen": "cdkdx docgen",
+    "release:npm": "cdkdx release npm",
+    "release:pypi": "cdkdx release pypi"
+  },
+  "jsii": {
+    "outdir": "dist",
+    "tsc": {
+      "outDir": "lib",
+      "rootDir": "src"
+    },
+    "excludeTypescript": [
+      "src/lambdas",
+      "src/**/__tests__"
+    ],
+    "targets": {
+      "python": {
+        "distName": "cdkeks",
+        "module": "cdkeks"
+      }
+    }
+  },
+  "peerDependencies": {
+    "@aws-cdk/aws-certificatemanager": "^1.107.0",
+    "@aws-cdk/aws-ec2": "^1.107.0",
+    "@aws-cdk/aws-efs": "^1.107.0",
+    "@aws-cdk/aws-eks": "^1.107.0",
+    "@aws-cdk/aws-elasticsearch": "^1.107.0",
+    "@aws-cdk/aws-iam": "^1.107.0",
+    "@aws-cdk/aws-logs": "^1.107.0",
+    "@aws-cdk/aws-route53": "^1.107.0",
+    "@aws-cdk/core": "^1.107.0",
+    "cdk8s": "1.0.0-beta.14",
+    "constructs": "^3.3.75",
+    "cdk8s-plus-17": "^1.0.0-beta.20",
+    "@aws-cdk/aws-elasticloadbalancingv2": "^1.107.0"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-certificatemanager": "^1.107.0",
+    "@aws-cdk/aws-ec2": "^1.107.0",
+    "@aws-cdk/aws-efs": "^1.107.0",
+    "@aws-cdk/aws-eks": "^1.107.0",
+    "@aws-cdk/aws-elasticsearch": "^1.107.0",
+    "@aws-cdk/aws-elasticloadbalancingv2": "^1.107.0",
+    "@aws-cdk/aws-iam": "^1.107.0",
+    "@aws-cdk/aws-logs": "^1.107.0",
+    "@aws-cdk/aws-route53": "^1.107.0",
+    "@aws-cdk/core": "^1.107.0",
+    "cdk8s": "1.0.0-beta.14",
+    "cdk8s-plus-17": "^1.0.0-beta.20",
+    "constructs": "^3.3.75"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^1.107.0",
+    "jest-cdk-snapshot": "^1.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

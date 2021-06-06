@@ -1,0 +1,34 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "0.0.1",
+  "repository": "https://github.com/hupe1980/cdkeks.git",
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "prepare": "FORCE_COLOR=1 lerna run build",
+    "test": "cdkdx test",
+    "build": "FORCE_COLOR=1 lerna run build",
+    "outdated:all": "yarn outdated",
+    "upgrade:all": "yarn upgrade",
+    "upgrade:cdk": "FORCE_COLOR=1 lerna run upgrade:cdk && yarn",
+    "upgrade-interactive:all": "yarn upgrade-interactive --latest",
+    "lint": "cdkdx lint --report-unused-disable-directives",
+    "lint:fix": "cdkdx lint --fix",
+    "docgen": "FORCE_COLOR=1 lerna run docgen --scope cdkeks",
+    "package": "FORCE_COLOR=1 lerna run package --scope cdkeks",
+    "release:npm": "FORCE_COLOR=1 lerna run release:npm --scope cdkeks",
+    "release:pypi": "FORCE_COLOR=1 lerna run release:pypi --scope cdkeks",
+    "import": "cdk8s -l typescript -o cdkeks/src/k8s/imports import k8s@1.20.0"
+  },
+  "workspaces": [
+    "cdkeks",
+    "examples/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^12.12.50",
+    "cdk8s-cli": "^1.0.0-beta.19",
+    "cdkdx": "^1.0.3",
+    "lerna": "^4.0.0"
+  }
+}
