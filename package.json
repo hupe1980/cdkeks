@@ -1,7 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "version": "0.0.1",
   "repository": "https://github.com/hupe1980/cdkeks.git",
   "license": "MIT",
   "scripts": {

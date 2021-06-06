@@ -1,0 +1,6 @@
+/.git
+/coverage
+lib
+node_modules
+cdk.out
+cdkeks/src/k8s/imports/k8s.ts

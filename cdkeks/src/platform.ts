@@ -34,7 +34,7 @@ export class Platform extends CoreConstruct {
     addon.install(this, this);
   }
 
-  public addManifest(id: string, ...manifest: Record<string, any>[]): KubernetesManifest {
+  public addManifest(id: string, ...manifest: Record<string, unknown>[]): KubernetesManifest {
     return this.cluster.addManifest(id, manifest);
   }
 
