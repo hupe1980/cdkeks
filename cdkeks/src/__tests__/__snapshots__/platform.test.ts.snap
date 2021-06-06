@@ -1,0 +1,1151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default setup 1`] = `
+Object {
+  "Outputs": Object {
+    "ClusterConfigCommand43AAE40F": Object {
+      "Value": Object {
+        "Fn::Join": Array [
+          "",
+          Array [
+            "aws eks update-kubeconfig --name ",
+            Object {
+              "Ref": "Cluster9EE0221C",
+            },
+            " --region ",
+            Object {
+              "Ref": "AWS::Region",
+            },
+            " --role-arn ",
+            Object {
+              "Fn::GetAtt": Array [
+                "ClusterMastersRole9AA35625",
+                "Arn",
+              ],
+            },
+          ],
+        ],
+      },
+    },
+    "ClusterGetTokenCommand06AE992E": Object {
+      "Value": Object {
+        "Fn::Join": Array [
+          "",
+          Array [
+            "aws eks get-token --cluster-name ",
+            Object {
+              "Ref": "Cluster9EE0221C",
+            },
+            " --region ",
+            Object {
+              "Ref": "AWS::Region",
+            },
+            " --role-arn ",
+            Object {
+              "Fn::GetAtt": Array [
+                "ClusterMastersRole9AA35625",
+                "Arn",
+              ],
+            },
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": Any<Object>,
+  "Resources": Object {
+    "Cluster9EE0221C": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ClusterDefaultVpcIGW756BE43E",
+        "ClusterDefaultVpcPrivateSubnet1DefaultRouteD624C8BD",
+        "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C",
+        "ClusterDefaultVpcPrivateSubnet1RouteTableAssociationF8A67D95",
+        "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+        "ClusterDefaultVpcPrivateSubnet2DefaultRouteAB55737C",
+        "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298",
+        "ClusterDefaultVpcPrivateSubnet2RouteTableAssociationE1240DF2",
+        "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+        "ClusterDefaultVpcPublicSubnet1DefaultRouteCF22EF6E",
+        "ClusterDefaultVpcPublicSubnet1EIP498E2BD2",
+        "ClusterDefaultVpcPublicSubnet1NATGateway6E21013E",
+        "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98",
+        "ClusterDefaultVpcPublicSubnet1RouteTableAssociationAFBE6789",
+        "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+        "ClusterDefaultVpcPublicSubnet2DefaultRoute1FA8621E",
+        "ClusterDefaultVpcPublicSubnet2EIP265F4810",
+        "ClusterDefaultVpcPublicSubnet2NATGateway4AF4B728",
+        "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47",
+        "ClusterDefaultVpcPublicSubnet2RouteTableAssociationA8539C50",
+        "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+        "ClusterDefaultVpcFA9F2722",
+        "ClusterDefaultVpcVPCGWC1D00388",
+        "ClusterCreationRoleDefaultPolicyE8BDFC7B",
+        "ClusterCreationRole360249B6",
+      ],
+      "Properties": Object {
+        "AssumeRoleArn": Object {
+          "Fn::GetAtt": Array [
+            "ClusterCreationRole360249B6",
+            "Arn",
+          ],
+        },
+        "AttributesRevision": 2,
+        "Config": Object {
+          "resourcesVpcConfig": Object {
+            "endpointPrivateAccess": true,
+            "endpointPublicAccess": true,
+            "securityGroupIds": Array [
+              Object {
+                "Fn::GetAtt": Array [
+                  "ClusterControlPlaneSecurityGroupD274242C",
+                  "GroupId",
+                ],
+              },
+            ],
+            "subnetIds": Array [
+              Object {
+                "Ref": "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+              },
+              Object {
+                "Ref": "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+              },
+              Object {
+                "Ref": "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+              },
+              Object {
+                "Ref": "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+              },
+            ],
+          },
+          "roleArn": Object {
+            "Fn::GetAtt": Array [
+              "ClusterRoleFA261979",
+              "Arn",
+            ],
+          },
+          "version": "1.20",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454",
+            "Outputs.awscdkawseksClusterResourceProviderframeworkonEventEA97AA31Arn",
+          ],
+        },
+      },
+      "Type": "Custom::AWSCDK-EKS-Cluster",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ClusterAwsAuthmanifestFE51F8AE": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ClusterKubectlReadyBarrier200052AF",
+      ],
+      "Properties": Object {
+        "ClusterName": Object {
+          "Ref": "Cluster9EE0221C",
+        },
+        "Manifest": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "[{\\"apiVersion\\":\\"v1\\",\\"kind\\":\\"ConfigMap\\",\\"metadata\\":{\\"name\\":\\"aws-auth\\",\\"namespace\\":\\"kube-system\\",\\"labels\\":{\\"aws.cdk.eks/prune-c89d3ef2163dfb30f38b127f20b71024bf7995ca21\\":\\"\\"}},\\"data\\":{\\"mapRoles\\":\\"[{\\\\\\"rolearn\\\\\\":\\\\\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ClusterMastersRole9AA35625",
+                  "Arn",
+                ],
+              },
+              "\\\\\\",\\\\\\"username\\\\\\":\\\\\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ClusterMastersRole9AA35625",
+                  "Arn",
+                ],
+              },
+              "\\\\\\",\\\\\\"groups\\\\\\":[\\\\\\"system:masters\\\\\\"]},{\\\\\\"rolearn\\\\\\":\\\\\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ClusterNodegroupDefaultCapacityNodeGroupRole55953B04",
+                  "Arn",
+                ],
+              },
+              "\\\\\\",\\\\\\"username\\\\\\":\\\\\\"system:node:{{EC2PrivateDNSName}}\\\\\\",\\\\\\"groups\\\\\\":[\\\\\\"system:bootstrappers\\\\\\",\\\\\\"system:nodes\\\\\\"]}]\\",\\"mapUsers\\":\\"[]\\",\\"mapAccounts\\":\\"[]\\"}}]",
+            ],
+          ],
+        },
+        "Overwrite": true,
+        "PruneLabel": "aws.cdk.eks/prune-c89d3ef2163dfb30f38b127f20b71024bf7995ca21",
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "ClusterCreationRole360249B6",
+            "Arn",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+            "Outputs.awscdkawseksKubectlProviderframeworkonEvent0A650005Arn",
+          ],
+        },
+      },
+      "Type": "Custom::AWSCDK-EKS-KubernetesResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ClusterControlPlaneSecurityGroupD274242C": Object {
+      "Properties": Object {
+        "GroupDescription": "EKS Control Plane Security Group",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "ClusterCreationRole360249B6": Object {
+      "DependsOn": Array [
+        "ClusterDefaultVpcIGW756BE43E",
+        "ClusterDefaultVpcPrivateSubnet1DefaultRouteD624C8BD",
+        "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C",
+        "ClusterDefaultVpcPrivateSubnet1RouteTableAssociationF8A67D95",
+        "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+        "ClusterDefaultVpcPrivateSubnet2DefaultRouteAB55737C",
+        "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298",
+        "ClusterDefaultVpcPrivateSubnet2RouteTableAssociationE1240DF2",
+        "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+        "ClusterDefaultVpcPublicSubnet1DefaultRouteCF22EF6E",
+        "ClusterDefaultVpcPublicSubnet1EIP498E2BD2",
+        "ClusterDefaultVpcPublicSubnet1NATGateway6E21013E",
+        "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98",
+        "ClusterDefaultVpcPublicSubnet1RouteTableAssociationAFBE6789",
+        "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+        "ClusterDefaultVpcPublicSubnet2DefaultRoute1FA8621E",
+        "ClusterDefaultVpcPublicSubnet2EIP265F4810",
+        "ClusterDefaultVpcPublicSubnet2NATGateway4AF4B728",
+        "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47",
+        "ClusterDefaultVpcPublicSubnet2RouteTableAssociationA8539C50",
+        "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+        "ClusterDefaultVpcFA9F2722",
+        "ClusterDefaultVpcVPCGWC1D00388",
+      ],
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      Object {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ClusterCreationRoleDefaultPolicyE8BDFC7B": Object {
+      "DependsOn": Array [
+        "ClusterDefaultVpcIGW756BE43E",
+        "ClusterDefaultVpcPrivateSubnet1DefaultRouteD624C8BD",
+        "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C",
+        "ClusterDefaultVpcPrivateSubnet1RouteTableAssociationF8A67D95",
+        "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+        "ClusterDefaultVpcPrivateSubnet2DefaultRouteAB55737C",
+        "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298",
+        "ClusterDefaultVpcPrivateSubnet2RouteTableAssociationE1240DF2",
+        "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+        "ClusterDefaultVpcPublicSubnet1DefaultRouteCF22EF6E",
+        "ClusterDefaultVpcPublicSubnet1EIP498E2BD2",
+        "ClusterDefaultVpcPublicSubnet1NATGateway6E21013E",
+        "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98",
+        "ClusterDefaultVpcPublicSubnet1RouteTableAssociationAFBE6789",
+        "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+        "ClusterDefaultVpcPublicSubnet2DefaultRoute1FA8621E",
+        "ClusterDefaultVpcPublicSubnet2EIP265F4810",
+        "ClusterDefaultVpcPublicSubnet2NATGateway4AF4B728",
+        "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47",
+        "ClusterDefaultVpcPublicSubnet2RouteTableAssociationA8539C50",
+        "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+        "ClusterDefaultVpcFA9F2722",
+        "ClusterDefaultVpcVPCGWC1D00388",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "iam:PassRole",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "ClusterRoleFA261979",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "eks:CreateCluster",
+                "eks:DescribeCluster",
+                "eks:DescribeUpdate",
+                "eks:DeleteCluster",
+                "eks:UpdateClusterVersion",
+                "eks:UpdateClusterConfig",
+                "eks:CreateFargateProfile",
+                "eks:TagResource",
+                "eks:UntagResource",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                "*",
+              ],
+            },
+            Object {
+              "Action": Array [
+                "eks:DescribeFargateProfile",
+                "eks:DeleteFargateProfile",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": Array [
+                "iam:GetRole",
+                "iam:listAttachedRolePolicies",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "iam:CreateServiceLinkedRole",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": Array [
+                "ec2:DescribeInstances",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeDhcpOptions",
+                "ec2:DescribeVpcs",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ClusterCreationRoleDefaultPolicyE8BDFC7B",
+        "Roles": Array [
+          Object {
+            "Ref": "ClusterCreationRole360249B6",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ClusterDefaultVpcFA9F2722": Object {
+      "Properties": Object {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "ClusterDefaultVpcIGW756BE43E": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "ClusterDefaultVpcPrivateSubnet1DefaultRouteD624C8BD": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet1NATGateway6E21013E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/internal-elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterDefaultVpcPrivateSubnet1RouteTableAssociationF8A67D95": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet1RouteTable7844020C",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterDefaultVpcPrivateSubnet1Subnet03F39409": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.128.0/18",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "kubernetes.io/role/internal-elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterDefaultVpcPrivateSubnet2DefaultRouteAB55737C": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet2NATGateway4AF4B728",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/internal-elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterDefaultVpcPrivateSubnet2RouteTableAssociationE1240DF2": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet2RouteTable1F9A5298",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            1,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.192.0/18",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "kubernetes.io/role/internal-elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterDefaultVpcPublicSubnet1DefaultRouteCF22EF6E": Object {
+      "DependsOn": Array [
+        "ClusterDefaultVpcVPCGWC1D00388",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "ClusterDefaultVpcIGW756BE43E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterDefaultVpcPublicSubnet1EIP498E2BD2": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "ClusterDefaultVpcPublicSubnet1NATGateway6E21013E": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "ClusterDefaultVpcPublicSubnet1EIP498E2BD2",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterDefaultVpcPublicSubnet1RouteTableAssociationAFBE6789": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet1RouteTable1DCCDD98",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterDefaultVpcPublicSubnet1Subnet3BFE1BDA": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.0.0/18",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterDefaultVpcPublicSubnet2DefaultRoute1FA8621E": Object {
+      "DependsOn": Array [
+        "ClusterDefaultVpcVPCGWC1D00388",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "ClusterDefaultVpcIGW756BE43E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterDefaultVpcPublicSubnet2EIP265F4810": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "ClusterDefaultVpcPublicSubnet2NATGateway4AF4B728": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "ClusterDefaultVpcPublicSubnet2EIP265F4810",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterDefaultVpcPublicSubnet2RouteTableAssociationA8539C50": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet2RouteTable6F1F5F47",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterDefaultVpcPublicSubnet2SubnetC4E9A966": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            1,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.64.0/18",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "kubernetes.io/role/elb",
+            "Value": "1",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "Default/Cluster/DefaultVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterDefaultVpcVPCGWC1D00388": Object {
+      "Properties": Object {
+        "InternetGatewayId": Object {
+          "Ref": "ClusterDefaultVpcIGW756BE43E",
+        },
+        "VpcId": Object {
+          "Ref": "ClusterDefaultVpcFA9F2722",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "ClusterKubectlReadyBarrier200052AF": Object {
+      "DependsOn": Array [
+        "ClusterCreationRoleDefaultPolicyE8BDFC7B",
+        "ClusterCreationRole360249B6",
+        "Cluster9EE0221C",
+      ],
+      "Properties": Object {
+        "Type": "String",
+        "Value": "aws:cdk:eks:kubectl-ready",
+      },
+      "Type": "AWS::SSM::Parameter",
+    },
+    "ClusterMastersRole9AA35625": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      Object {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ClusterNodegroupDefaultCapacityDA0920A3": Object {
+      "Properties": Object {
+        "AmiType": "AL2_x86_64",
+        "ClusterName": Object {
+          "Ref": "Cluster9EE0221C",
+        },
+        "ForceUpdateEnabled": true,
+        "InstanceTypes": Array [
+          "m5.large",
+        ],
+        "NodeRole": Object {
+          "Fn::GetAtt": Array [
+            "ClusterNodegroupDefaultCapacityNodeGroupRole55953B04",
+            "Arn",
+          ],
+        },
+        "ScalingConfig": Object {
+          "DesiredSize": 2,
+          "MaxSize": 2,
+          "MinSize": 2,
+        },
+        "Subnets": Array [
+          Object {
+            "Ref": "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+          },
+          Object {
+            "Ref": "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+          },
+        ],
+      },
+      "Type": "AWS::EKS::Nodegroup",
+    },
+    "ClusterNodegroupDefaultCapacityNodeGroupRole55953B04": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "ec2.",
+                      Object {
+                        "Ref": "AWS::URLSuffix",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonEKSWorkerNodePolicy",
+              ],
+            ],
+          },
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonEKS_CNI_Policy",
+              ],
+            ],
+          },
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ClusterRoleFA261979": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "eks.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonEKSClusterPolicy",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "Parameters": Object {
+          "referencetoAssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1S3Bucket36C546E0Ref": Object {
+            "Ref": "AssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1S3Bucket36C546E0",
+          },
+          "referencetoAssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1S3VersionKey85C003F9Ref": Object {
+            "Ref": "AssetParameters50e10880d134a01b440991fc77d217f39f01c2d56945215ee9a3b81187c6f3b1S3VersionKey85C003F9",
+          },
+          "referencetoAssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43Ref": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "referencetoAssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7Ref": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+          },
+          "referencetoClusterCreationRole360249B6Arn": Object {
+            "Fn::GetAtt": Array [
+              "ClusterCreationRole360249B6",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Ref": "AssetParametersf02f3076cecdd3fe7ea2a610ab0445ca244df5277a7c99787f12824e888c69fcS3Bucket31C2B256",
+              },
+              "/",
+              Object {
+                "Fn::Select": Array [
+                  0,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParametersf02f3076cecdd3fe7ea2a610ab0445ca244df5277a7c99787f12824e888c69fcS3VersionKey48B461CF",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "Fn::Select": Array [
+                  1,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParametersf02f3076cecdd3fe7ea2a610ab0445ca244df5277a7c99787f12824e888c69fcS3VersionKey48B461CF",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "Parameters": Object {
+          "referencetoAssetParameters092d7f04586cb1a946bd246f2ceac752f0a6c07032105e9a8ddcb3ba9fc7b621S3Bucket9F92FF62Ref": Object {
+            "Ref": "AssetParameters092d7f04586cb1a946bd246f2ceac752f0a6c07032105e9a8ddcb3ba9fc7b621S3Bucket9F92FF62",
+          },
+          "referencetoAssetParameters092d7f04586cb1a946bd246f2ceac752f0a6c07032105e9a8ddcb3ba9fc7b621S3VersionKeyA109F1F3Ref": Object {
+            "Ref": "AssetParameters092d7f04586cb1a946bd246f2ceac752f0a6c07032105e9a8ddcb3ba9fc7b621S3VersionKeyA109F1F3",
+          },
+          "referencetoAssetParametersbafd50ae9f214e496ff8c72c6425f93dca3ccd590e20963706d5d610d9c75757S3Bucket008DBB35Ref": Object {
+            "Ref": "AssetParametersbafd50ae9f214e496ff8c72c6425f93dca3ccd590e20963706d5d610d9c75757S3Bucket008DBB35",
+          },
+          "referencetoAssetParametersbafd50ae9f214e496ff8c72c6425f93dca3ccd590e20963706d5d610d9c75757S3VersionKey97C3E1A0Ref": Object {
+            "Ref": "AssetParametersbafd50ae9f214e496ff8c72c6425f93dca3ccd590e20963706d5d610d9c75757S3VersionKey97C3E1A0",
+          },
+          "referencetoAssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43Ref": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "referencetoAssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7Ref": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+          },
+          "referencetoAssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3BucketAEADE8C7Ref": Object {
+            "Ref": "AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3BucketAEADE8C7",
+          },
+          "referencetoAssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415FRef": Object {
+            "Ref": "AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415F",
+          },
+          "referencetoCluster9EE0221CArn": Object {
+            "Fn::GetAtt": Array [
+              "Cluster9EE0221C",
+              "Arn",
+            ],
+          },
+          "referencetoCluster9EE0221CClusterSecurityGroupId": Object {
+            "Fn::GetAtt": Array [
+              "Cluster9EE0221C",
+              "ClusterSecurityGroupId",
+            ],
+          },
+          "referencetoClusterCreationRole360249B6Arn": Object {
+            "Fn::GetAtt": Array [
+              "ClusterCreationRole360249B6",
+              "Arn",
+            ],
+          },
+          "referencetoClusterDefaultVpcPrivateSubnet1Subnet03F39409Ref": Object {
+            "Ref": "ClusterDefaultVpcPrivateSubnet1Subnet03F39409",
+          },
+          "referencetoClusterDefaultVpcPrivateSubnet2SubnetA526AEA7Ref": Object {
+            "Ref": "ClusterDefaultVpcPrivateSubnet2SubnetA526AEA7",
+          },
+        },
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Ref": "AssetParametersf29006e8f27c25646469971945477101263e1d7b7c97d32e267ab977d18060bdS3Bucket96B8B001",
+              },
+              "/",
+              Object {
+                "Fn::Select": Array [
+                  0,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParametersf29006e8f27c25646469971945477101263e1d7b7c97d32e267ab977d18060bdS3VersionKeyA1DC6BB1",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "Fn::Select": Array [
+                  1,
+                  Object {
+                    "Fn::Split": Array [
+                      "||",
+                      Object {
+                        "Ref": "AssetParametersf29006e8f27c25646469971945477101263e1d7b7c97d32e267ab977d18060bdS3VersionKeyA1DC6BB1",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+}
+`;

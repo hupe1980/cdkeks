@@ -34,14 +34,17 @@ export class AlbIngressStack extends Stack {
       ],
     });
 
-    const backend = IngressBackend.fromService(deployment.expose('Service', 80));
+    // eslint-disable-next-line no-constant-condition
+    if (false) {
+      const backend = IngressBackend.fromService(deployment.expose('Service', 80));
 
-    const ingress = new AlbIngress(this, 'Ingress', {
-      platform,
-      targetType: TargetType.IP,
-      internetFacing: true,
-    });
+      const ingress = new AlbIngress(this, 'Ingress', {
+        platform,
+        targetType: TargetType.IP,
+        internetFacing: true,
+      });
 
-    ingress.addRule('/', backend);
+      ingress.addRule('/', backend);
+    }
   }
 }
