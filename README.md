@@ -30,6 +30,7 @@ const platform = new Platform(this, 'Platform', {
   addons: [new AwsCalicoAddon(), new AwsLoadBalancerControllerAddon()/*,...*/],
 });
 ```
+See more [addons](https://github.com/hupe1980/cdkeks/tree/main/cdkeks/src/addons).
 
 ### Alb ingress
 ```typescript
@@ -72,11 +73,11 @@ deployment.expose('LoadBalancer', 80, {
 
 ## API Reference
 
-See [API.md](https://github.com/hupe1980/cdkeks/tree/master/cdkeks/API.md).
+See [API.md](https://github.com/hupe1980/cdkeks/tree/main/cdkeks/API.md).
 
 ## Example
 
-See more complete [examples](https://github.com/hupe1980/cdkeks/tree/master/examples).
+See more complete [examples](https://github.com/hupe1980/cdkeks/tree/main/examples).
 
 ## License
-[MIT](https://github.com/hupe1980/cdkeks/tree/master/cdkeks/LICENSE)
+[MIT](https://github.com/hupe1980/cdkeks/tree/main/cdkeks/LICENSE)
