@@ -1,6 +1,6 @@
 {
   "name": "alb-ingress",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -9,13 +9,13 @@
     "cdk": "cdk"
   },
   "dependencies": {
-    "@aws-cdk/core": "^1.107.0",
     "@aws-cdk/aws-ec2": "^1.107.0",
     "@aws-cdk/aws-eks": "^1.107.0",
     "@aws-cdk/aws-iam": "^1.107.0",
-    "cdkeks": "^0.0.2",
+    "@aws-cdk/core": "^1.107.0",
     "cdk8s": "1.0.0-beta.14",
     "cdk8s-plus-17": "^1.0.0-beta.20",
+    "cdkeks": "^0.0.2",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {

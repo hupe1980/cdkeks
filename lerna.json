@@ -5,7 +5,7 @@
     "cdkeks",
     "examples/*"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "command": {
     "publish": {
       "allowBranch": "main"
