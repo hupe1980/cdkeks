@@ -1,7 +1,7 @@
 {
   "name": "cdkeks",
   "version": "0.0.2",
-  "description": "Higher-level cdk construct to build a eks kubernetes platform with batteries included",
+  "description": "Higher-level cdk construct to build an eks kubernetes platform with batteries included",
   "license": "MIT",
   "author": {
     "name": "hupe1980",
