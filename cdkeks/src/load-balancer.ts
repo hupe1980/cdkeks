@@ -46,11 +46,12 @@ export class LoadBalancer extends Service {
     });
   }
 
-  public get loadBalancerAddress(): string {
+  public get hostname(): string {
     const loadBalancerAddress = new KubernetesObjectValue(this, 'ServiceAddress', {
       cluster: this.platform.cluster,
       objectType: 'service',
       objectName: this.name,
+      objectNamespace: this.metadata.namespace,
       jsonPath: '.status.loadBalancer.ingress[0].hostname', // https://kubernetes.io/docs/reference/kubectl/jsonpath/
     });
 

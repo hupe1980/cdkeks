@@ -38,7 +38,9 @@ export class Deployment extends Cdk8sConstruct {
       type: options.serviceType ?? kplus.ServiceType.CLUSTER_IP,
     });
 
+    service.node.addDependency(this);
     service.addDeployment(this, port, { protocol: options.protocol, targetPort: options.targetPort });
+
     return service;
   }
 

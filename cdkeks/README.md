@@ -32,7 +32,7 @@ const platform = new Platform(this, 'Platform', {
 ```
 See more [addons](https://github.com/hupe1980/cdkeks/tree/main/cdkeks/src/addons).
 
-### Alb ingress
+### AlbIngress
 ```typescript
 const deployment = new Deployment(this, 'Deployment', {
   platform,
