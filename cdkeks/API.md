@@ -412,7 +412,7 @@ new LoadBalancer(scope: Construct, id: string, props: LoadBalancerProps)
 
 Name | Type | Description 
 -----|------|-------------
-**loadBalancerAddress** | <code>string</code> | <span></span>
+**hostname** | <code>string</code> | <span></span>
 
 
 
