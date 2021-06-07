@@ -126,6 +126,20 @@ addSecurityGroup(securityGroup: ISecurityGroup): void
 
 
 
+#### logAccessLogs(bucket, prefix?) <a id="cdkeks-albingress-logaccesslogs"></a>
+
+Enable access logging for this load balancer.
+
+```ts
+logAccessLogs(bucket: IBucket, prefix?: string): void
+```
+
+* **bucket** (<code>[IBucket](#aws-cdk-aws-s3-ibucket)</code>)  *No description*
+* **prefix** (<code>string</code>)  *No description*
+
+
+
+
 
 
 ## class AwsCalicoAddon  <a id="cdkeks-awscalicoaddon"></a>

@@ -303,7 +303,7 @@
     "@aws-cdk/cx-api" "1.107.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-s3@1.107.0":
+"@aws-cdk/aws-s3@1.107.0", "@aws-cdk/aws-s3@^1.107.0":
   version "1.107.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3/-/aws-s3-1.107.0.tgz#54914b5171d44f9f70fed764195bce735ac22b36"
   integrity sha512-BjH9S+ZlFHoqRDRT/I8m3MFB+80F6mHASMnKHuyXoMfUs8qMos7R8XEJAprx/dMf5EwAMfFYS0IFZH21CpBlxw==

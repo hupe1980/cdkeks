@@ -1,6 +1,7 @@
 import { ICertificate } from '@aws-cdk/aws-certificatemanager';
 import { IConnectable, Connections, ISecurityGroup, SecurityGroup, Port } from '@aws-cdk/aws-ec2';
 import { IpAddressType, SslPolicy } from '@aws-cdk/aws-elasticloadbalancingv2';
+import { IBucket } from '@aws-cdk/aws-s3';
 import { Construct, Lazy, Tags, Names } from '@aws-cdk/core';
 import * as cdk8s from 'cdk8s';
 import * as kplus from 'cdk8s-plus-17';
@@ -128,6 +129,17 @@ export class AlbIngress extends Cdk8sConstruct implements IConnectable {
    */
   public addSecurityGroup(securityGroup: ISecurityGroup): void {
     this.securityGroups.push(securityGroup);
+  }
+
+  /**
+   * Enable access logging for this load balancer.
+   */
+  public logAccessLogs(bucket: IBucket, prefix = '/'): void {
+    this.apiObject.metadata.addAnnotation(
+      'alb.ingress.kubernetes.io/load-balancer-attributes',
+      `access_logs.s3.enabled=true,access_logs.s3.bucket=${bucket.bucketName},access_logs.s3.prefix=${prefix}`,
+    );
+    this.node.addDependency(bucket);
   }
 
   public get name(): string {

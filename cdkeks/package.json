@@ -1,7 +1,7 @@
 {
   "name": "cdkeks",
   "version": "0.0.4",
-  "description": "Higher-level cdk construct to build an eks kubernetes platform with batteries included",
+  "description": "Higher-level hybrid cdk|cdk8s construct to build an eks kubernetes platform with batteries included",
   "license": "MIT",
   "author": {
     "name": "hupe1980",
@@ -67,6 +67,7 @@
     "@aws-cdk/aws-eks": "^1.107.0",
     "@aws-cdk/aws-elasticloadbalancingv2": "^1.107.0",
     "@aws-cdk/aws-elasticsearch": "^1.107.0",
+    "@aws-cdk/aws-s3": "^1.107.0",
     "@aws-cdk/aws-iam": "^1.107.0",
     "@aws-cdk/aws-logs": "^1.107.0",
     "@aws-cdk/aws-route53": "^1.107.0",
@@ -82,6 +83,7 @@
     "@aws-cdk/aws-eks": "^1.107.0",
     "@aws-cdk/aws-elasticloadbalancingv2": "^1.107.0",
     "@aws-cdk/aws-elasticsearch": "^1.107.0",
+    "@aws-cdk/aws-s3": "^1.107.0",
     "@aws-cdk/aws-iam": "^1.107.0",
     "@aws-cdk/aws-logs": "^1.107.0",
     "@aws-cdk/aws-route53": "^1.107.0",

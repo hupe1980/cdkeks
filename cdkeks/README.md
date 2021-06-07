@@ -1,5 +1,5 @@
 # cdkeks
-Higher-level cdk construct to build an eks kubernetes platform with batteries included:
+Higher-level hybrid cdk|cdk8s construct to build an eks kubernetes platform with batteries included:
 
 - Network policies with [aws-calico](https://github.com/aws/eks-charts/tree/master/stable/aws-calico)
 - DNS management with [external-dns](https://github.com/kubernetes-sigs/external-dns)
