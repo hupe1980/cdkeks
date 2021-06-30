@@ -66,7 +66,7 @@ export class ExternalDnsAddon implements IAddon {
 
     const chart = new HelmChart(scope, 'ExternalDnsAddonChart', {
       cluster: platform.cluster,
-      namespace: 'kube-system',
+      namespace: namespace.name,
       repository: 'https://charts.bitnami.com/bitnami',
       chart: 'external-dns',
       release: 'external-dns',
