@@ -12,7 +12,7 @@ export interface NginxIngressAddonProps {
   readonly namespaceName?: string;
 
   /**
-   * @default `3.6.6`
+   * @default `0.9.2`
    */
   readonly version?: string;
 }
@@ -23,14 +23,14 @@ export class NginxIngressAddon implements IAddon {
   constructor(private readonly props: NginxIngressAddonProps = {}) {}
 
   public install(scope: Construct, platform: Platform): void {
-    const namespace = new Namespace(scope, 'AwsForFluentBitAddonNamespace', {
+    const namespace = new Namespace(scope, 'NginxIngressAddonNamespace', {
       platform,
       metadata: {
         name: this.props.namespaceName ?? 'nginx-ingress',
       },
     });
 
-    const chart = new HelmChart(scope, 'ArgoCDAddonChart', {
+    const chart = new HelmChart(scope, 'NginxIngressAddonChart', {
       cluster: platform.cluster,
       namespace: namespace.name,
       repository: 'https://helm.nginx.com/stable',
