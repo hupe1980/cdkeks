@@ -1,6 +1,6 @@
 {
   "name": "load-balancer",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "@aws-cdk/core": "^1.110.1",
     "cdk8s": "1.0.0-beta.25",
     "cdk8s-plus-17": "^1.0.0-beta.35",
-    "cdkeks": "^0.0.5",
+    "cdkeks": "^0.0.6",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
