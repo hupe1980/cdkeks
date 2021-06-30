@@ -26,8 +26,8 @@
   ],
   "devDependencies": {
     "@types/node": "^12.12.50",
-    "cdk8s-cli": "^1.0.0-beta.19",
-    "cdkdx": "^1.0.3",
+    "cdk8s-cli": "1.0.0-beta.25",
+    "cdkdx": "^1.1.0",
     "lerna": "^4.0.0"
   }
 }
